@@ -8,9 +8,9 @@ def growth_rate(initial,final,):
     return rate
 
 
-def growth_rate_intrisic(biomass,intrinsic_growth_rate):
-    rate = biomass * intrinsic_growth_rate
-    return rate
+def growth(biomass,intrinsic_growth_rate):
+    gained_biomass = biomass * intrinsic_growth_rate
+    return gained_biomass
 
 
 def compound_annual_growth_rate(initial,final,period,unit='years'):
