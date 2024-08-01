@@ -60,9 +60,9 @@ class Species:
         self.properties[name] = value
 
 
-    def calculate_growth_rate_intrinsic(self,percentage=False):
+    def calculate_growth(self):
         try:
-            rate = formulas.growth_rate_intrisic(biomass=self.biomass,intrinsic_growth_rate=self.intrinsic_growth_rate,percentage=percentage)
+            rate = formulas.growth(biomass=self.biomass,intrinsic_growth_rate=self.intrinsic_growth_rate)
             return rate
 
         except TypeError:
@@ -70,10 +70,9 @@ class Species:
             return "ERROR"
 
 
-
-    def calculate_growth_rate(self,final_biomass,percentage=False):
+    def calculate_growth_rate(self,final_biomass):
         try:
-            rate = formulas.growth_rate(initial=self.biomass,final=final_biomass,percentage=percentage)
+            rate = formulas.growth_rate(initial=self.biomass,final=final_biomass)
             return rate
 
         except TypeError as error:
@@ -81,9 +80,9 @@ class Species:
             return "ERROR"
 
 
-    def calculate_compound_annual_growth_rate(self,final_biomass,period,unit='years',percentage=False):
+    def calculate_compound_annual_growth_rate(self,final_biomass,period,unit='years'):
         try:
-            rate = formulas.compound_annual_growth_rate(initial=self.biomass,final=final_biomass,unit=unit,period=period,percentage=percentage)
+            rate = formulas.compound_annual_growth_rate(initial=self.biomass,final=final_biomass,unit=unit,period=period)
             return rate
 
         except TypeError as error:
@@ -91,9 +90,9 @@ class Species:
             return "ERROR"
 
 
-    def calculate_respiration_rate_using_biomass(self,percentage=False):
+    def calculate_respiration_rate_using_biomass(self):
         try:
-            rate = formulas.respiration_rate_bm(biomass=self.biomass,metabolic_rate=self.metabolic_rate,percentage=percentage)
+            rate = formulas.respiration_rate_bm(biomass=self.biomass,metabolic_rate=self.metabolic_rate)
             return rate
 
         except TypeError as error:
@@ -101,12 +100,12 @@ class Species:
             return 'ERROR'
 
 
-    def calculate_predation_rate(self,attack_rate,prey_handling_time,percentage=False):
+    def calculate_predation_rate(self,attack_rate,prey_handling_time):
         global total_prey_biomass
         try:
             for prey in self.preys:
                 total_prey_biomass =+ prey.biomass
-            rate = formulas.predation_rate(prey_biomass=total_prey_biomass,attack_rate=attack_rate,predator_handling_time=prey_handling_time,percentage=percentage)
+            rate = formulas.predation_rate(prey_biomass=total_prey_biomass,attack_rate=attack_rate,predator_handling_time=prey_handling_time)
             return rate
 
         except TypeError as error:
